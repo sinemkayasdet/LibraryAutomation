@@ -20,11 +20,8 @@ public class US3_StepDefinitions {
         actualPopularBookGenre = DB_Util.getFirstRowFirstColumn();
 
     }
-
     @Then("verify that {string} is the most popular book genre.")
     public void verifyThatIsTheMostPopularBookGenre(String expectedpopularBookGenre) {
-        Assert.assertEquals(expectedpopularBookGenre,actualPopularBookGenre);
+        Assert.assertEquals(expectedpopularBookGenre, actualPopularBookGenre);
     }
-
-
 }

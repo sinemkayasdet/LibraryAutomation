@@ -2,9 +2,13 @@ package com.library.stepdefinitions;
 
 import com.library.utulity.ConfigurationReader;
 import com.library.utulity.DB_Util;
+import com.library.utulity.Driver;
+import io.cucumber.java.Scenario;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hook {
     @BeforeClass
@@ -15,8 +19,18 @@ public class Hook {
     }
 
     @AfterClass
-    public void teardown(){
-        // tear down the connection only once after all the tests in this class
-        DB_Util.destroy();
-    }
+
+        public void tearDown(Scenario scenario) {
+
+            if (scenario.isFailed()) {
+
+                byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "image/png", scenario.getName());
+            }
+
+
+            DB_Util.destroy();
+            Driver.closeDriver();
+
+        }
 }
