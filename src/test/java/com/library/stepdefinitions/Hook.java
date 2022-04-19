@@ -4,6 +4,7 @@ import com.library.utulity.ConfigurationReader;
 import com.library.utulity.DB_Util;
 import com.library.utulity.Driver;
 import io.cucumber.java.Scenario;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,14 +12,14 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 public class Hook {
-    @BeforeClass
+    @Before
     public void setup(){
         // create connection ONLY ONCE! for all tests in this class
         DB_Util.createConnection(ConfigurationReader.getProperty("url"),
                 ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
     }
 
-    @AfterClass
+    @After
 
         public void tearDown(Scenario scenario) {
 

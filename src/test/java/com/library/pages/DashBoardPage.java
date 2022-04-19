@@ -38,6 +38,37 @@ public class DashBoardPage {
     public List<WebElement> borrowedBooksListByUser;
 
 
+    @FindBy(xpath = "//tbody/tr/td")
+    public List<WebElement> bookTable;
+
+    @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
+    public WebElement editBook;
+
+
+    @FindBy (xpath = "//input[@class='form-control']")
+    public List<WebElement> verifyBookInfo;
+
+    @FindBy (xpath = "//select[@id='book_categories']")
+    public WebElement bookCategories;
+
+
+    public List<String> getAllDropDown(){
+        Select select = new Select(bookCategories);
+        List<String> list = new ArrayList<>();
+        for (WebElement each : select.getOptions()) {
+            if(each.getText().equals("ALL")){
+                continue;
+            }
+            list.add(each.getText());
+        }
+        return list;
+    }
+
+
+
+
+
+
     public void clickBookModule() {
         Actions actions = new Actions(Driver.getDriver());
         BrowserUtils.highlight(booksModule);
@@ -49,5 +80,9 @@ public class DashBoardPage {
         borrowedBy.click();
 
 
+
+
     }
+
+
 }
