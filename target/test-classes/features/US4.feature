@@ -1,4 +1,3 @@
-@smoke
 Feature: As a librarian, I want to know who is the most popular user
   Scenario: verify who is the most popular user who reads the most
     Given Establish the database connection

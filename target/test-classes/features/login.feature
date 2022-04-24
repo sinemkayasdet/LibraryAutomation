@@ -1,4 +1,4 @@
-@smoke
+@wip
 Feature: As a data consumer, I want the user information are stored in mySql DB correctly in users table.
 
   Background:

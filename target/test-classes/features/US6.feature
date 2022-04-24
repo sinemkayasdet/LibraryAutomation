@@ -1,4 +1,3 @@
-@smoke
 Feature: As a data consumer, I want UI and DB book categories match.
 
   Scenario: verify book categories with DB
